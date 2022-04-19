@@ -35,6 +35,9 @@ local options = {
     guifont = "monospace:h17"
 }
 
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
 vim.opt.shortmess:append "c"
 for option, value in pairs(options) do
     vim.opt[option] = value
@@ -42,7 +45,4 @@ end
 
 vim.cmd "set whichwrap+=<,>,[,],h,l"
 vim.cmd [[set iskeyword+=-]]
-vim.cmd [[set formatoptions-=c]]
-vim.cmd [[set formatoptions-=r]]
-vim.cmd [[set formatoptions-=o]]
-
+vim.cmd [[set formatoptions-=cro]]
