@@ -47,7 +47,7 @@ return packer.startup(function(use)
   use "windwp/nvim-autopairs" -- Autopairs, integrates with both cmp and treesitter
   use "numToStr/Comment.nvim"
   use "kyazdani42/nvim-web-devicons"
-  use "kyazdani42/nvim-tree.lua"
+  use { "kyazdani42/nvim-tree.lua" }
   use "tamago324/lir.nvim"
   use "akinsho/bufferline.nvim"
   use "moll/vim-bbye"
@@ -75,12 +75,12 @@ return packer.startup(function(use)
   -- use "lunarvim/vim-solidity"
   use "Mephistophiles/surround.nvim"
   use "tpope/vim-repeat"
-  use "Shatur/neovim-session-manager"
+  -- use "Shatur/neovim-session-manager"
   use "rcarriga/nvim-notify"
   use "tversteeg/registers.nvim"
   -- use "metakirby5/codi.vim"
-  use "nyngwang/NeoZoom.lua"
-  use "SmiteshP/nvim-gps"
+  use { "nyngwang/NeoZoom.lua", branch = "neo-zoom-original" }
+  use { "christianchiarulli/nvim-gps", branch = "text_hl" }
   use { "michaelb/sniprun", run = "bash ./install.sh" }
   use {
 
@@ -88,7 +88,17 @@ return packer.startup(function(use)
     run = "cd app && npm install",
     ft = "markdown",
   }
-  use "matbme/JABS.nvim"
+  use {
+    "christianchiarulli/JABS.nvim",
+    requires = { "kyazdani42/nvim-web-devicons" }, --optional
+  }
+
+  use {
+    "ghillb/cybu.nvim",
+    branch = "v1.x", -- won't receive breaking changes
+    -- branch = "main", -- timely updates
+    requires = { "kyazdani42/nvim-web-devicons" }, --optional
+  }
 
   -- Colorschemes
   use "folke/tokyonight.nvim"
@@ -99,9 +109,10 @@ return packer.startup(function(use)
 
   -- cmp plugins
   -- use "hrsh7th/nvim-cmp" -- The completion plugin
-    use { 'hrsh7th/nvim-cmp',
-      commit = "dbc72290295cfc63075dab9ea635260d2b72f2e5",
-    }
+  use {
+    "hrsh7th/nvim-cmp",
+    -- commit = "dbc72290295cfc63075dab9ea635260d2b72f2e5",
+  }
   use "hrsh7th/cmp-buffer" -- buffer completions
   use "hrsh7th/cmp-path" -- path completions
   use "hrsh7th/cmp-cmdline" -- cmdline completions
@@ -109,9 +120,9 @@ return packer.startup(function(use)
   use "hrsh7th/cmp-nvim-lsp"
   use "hrsh7th/cmp-emoji"
   use "hrsh7th/cmp-nvim-lua"
+  use "rcarriga/cmp-dap"
   use {
     "tzachar/cmp-tabnine",
-    run='./install.sh',
     config = function()
       local tabnine = require "cmp_tabnine.config"
       tabnine:setup {
@@ -130,6 +141,7 @@ return packer.startup(function(use)
     run = "./install.sh",
     requires = "hrsh7th/nvim-cmp",
   }
+
   -- use 'David-Kunz/cmp-npm' -- doesn't seem to work
 
   -- snippets

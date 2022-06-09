@@ -23,3 +23,4 @@ local tele_session_status_ok, telescope = pcall(telescope.load_extension, "sessi
 if not tele_session_status_ok then
 	return
 end
+
